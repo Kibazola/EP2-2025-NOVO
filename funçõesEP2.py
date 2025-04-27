@@ -27,7 +27,7 @@ def remover_dado(dados_rolados, dados_no_estoque,dado_para_remover):
 
     novo = [dados_rolados_novo,dados_no_estoque_novo]
 
-    return nov
+    return novo
 
 
 
