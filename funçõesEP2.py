@@ -245,35 +245,10 @@ def calcula_pontos_quadra(lista_n):
         return 0
 #11.4
 def calcula_pontos_soma(lista_n):
-        
-        i = 1
-        seq = 0
-        seq_final = 0
-        ig = 0
-        sem = 0
-        soma = 0
-        for num in lista_n:
-            soma += num
-        while i < len(lista_n):
-            if lista_n[i] - lista_n[i - 1] == 1:
-                seq += 1
-                if seq > seq_final:
-                    seq_final = seq
-            elif lista_n[i] == lista_n[i - 1]:
-                ig =+ 1
-                if ig > sem:
-                    sem = ig
-            else:
-                seq = 0
-            i += 1
-        if sem >= 5:
-            return 50
-        elif seq_final == 4:
-            return 15
-        elif seq_final == 5:
-            return 30
-        else:
-            return soma
+    soma +=0
+    for n in lista_n:
+        soma+=n
+    return soma
 #11.5
 def calcula_pontos_sequencia_alta(lista_n):
         lista_n = lista_n.copy()
