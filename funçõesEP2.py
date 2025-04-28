@@ -330,4 +330,31 @@ def calcula_pontos_regra_avancada(entrada):
 
     return dicionário
 
+#12
+def calcula_pontos_regra_simples(lista_n):
+    dic = {1:0, 2:0, 3:0, 4:0, 5:0, 6:0}
+
+    for n in lista_n:
+        dic[n] += n
+
+    return dic
+
    
+def faz_jogada(dados, categoria, cartela_de_pontos):
+
+    for regra, dic in cartela_de_pontos.items():
+        if regra == "regra_simples":
+
+            
+            if categoria in ["1","2","3","4","5","6"]:
+                categoria = int(categoria)
+
+                if categoria in dic:
+                    cartela_de_pontos["regra_simples"][categoria] = calcula_pontos_regra_simples(dados)[categoria]
+
+        elif regra == "regra_avancada":
+            if categoria in dic:
+                cartela_de_pontos["regra_avancada"][categoria] = calcula_pontos_regra_avancada(dados)[categoria]
+
+
+    return cartela_de_pontos
