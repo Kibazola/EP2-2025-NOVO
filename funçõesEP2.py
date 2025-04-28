@@ -173,3 +173,15 @@ def calcula_pontos_quadra(lista_n):
         return soma
     else:
         return 0
+
+
+#10
+def calcula_pontos_quina(lista):
+    novo = []
+    for n in lista:
+        if n not in novo:
+            novo.append(n)
+            c = lista.count(n)
+            if c >= 5:
+                return 50      
+    return 0
