@@ -154,3 +154,22 @@ def calcula_pontos_full_house(lista_n):
         return soma
     else:
         return 0
+
+#9
+def calcula_pontos_quadra(lista_n):
+    soma = 0
+    for num in lista_n:
+        soma += num
+    
+    maior_ig = 0
+    for num1 in lista_n:
+        ig = 0
+        for num2 in lista_n:
+            if num1 == num2: 
+                ig += 1
+        if ig > maior_ig:
+            maior_ig = ig
+    if maior_ig >= 4:
+        return soma
+    else:
+        return 0
