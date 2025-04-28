@@ -146,10 +146,6 @@ def calcula_pontos_full_house(lista_n):
     
     lista_n2 = []
     for num1 in lista_n:
-        ig = 0
-        for num2 in lista_n:
-            if num1 == num2: 
-                ig += 1
         if num1 not in lista_n2:
             lista_n2.append(num1)
         else:
