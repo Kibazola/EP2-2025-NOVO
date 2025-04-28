@@ -18,7 +18,6 @@ def guardar_dado(dados_r, dados_g, num):
     return resposta
 
 #3
-
 def remover_dado(dados_rolados, dados_no_estoque,dado_para_remover):
     dados_rolados_novo = dados_rolados.copy()
     dados_rolados_novo.append(dados_no_estoque[dado_para_remover])
@@ -29,5 +28,15 @@ def remover_dado(dados_rolados, dados_no_estoque,dado_para_remover):
 
     return novo
 
-
-
+#4
+def calcula_pontos_regra_simples(lista_n):
+    dic_r = {}
+    i = 1
+    while i < 7:
+        soma = 0
+        for numero in lista_n:
+            if numero == i:
+                soma += numero
+        dic_r[i] = soma
+        i += 1
+    return dic_r
