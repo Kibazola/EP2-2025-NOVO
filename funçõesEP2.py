@@ -136,3 +136,25 @@ def calcula_pontos_sequencia_alta(lista_n):
         return 30
     else:
         return 0
+    
+#QUESTÕES DO CONCEITO D:
+#8
+def calcula_pontos_full_house(lista_n):
+    soma = 0
+    for num in lista_n:
+        soma += num
+    
+    lista_n2 = []
+    for num1 in lista_n:
+        ig = 0
+        for num2 in lista_n:
+            if num1 == num2: 
+                ig += 1
+        if num1 not in lista_n2:
+            lista_n2.append(num1)
+        else:
+            False
+    if len(lista_n2) == 2:
+        return soma
+    else:
+        return 0
