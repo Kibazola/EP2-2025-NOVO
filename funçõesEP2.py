@@ -184,3 +184,177 @@ def calcula_pontos_quina(lista):
             if c >= 5:
                 return 50      
     return 0
+
+# 11
+def calcula_pontos_regra_avancada(entrada):
+    dicionário = {}
+
+# 11.1.Função calula pontos quina 
+    def calcula_pontos_quina(lista_n):
+        novo = []
+        for n in lista_n:
+            if n not in novo:
+                novo.append(n)
+                c = lista_n.count(n)
+                if c >= 5:
+                    return 50 
+        return 0
+    
+
+# 11.2.Função calcula pontos full house
+    def calcula_pontos_full_house(lista_n):
+        soma = 0
+        for num in lista_n:
+            soma += num
+
+        lista_n2 = []
+        for num1 in lista_n:
+            if num1 not in lista_n2:
+                lista_n2.append(num1)
+
+        if len(lista_n2) == 2:
+            num_a = lista_n2[0]
+            num_b = lista_n2[1]
+
+            cont_a = 0
+            cont_b = 0
+
+            for num in lista_n:
+                if num == num_a:
+                    cont_a += 1
+                elif num == num_b:
+                    cont_b += 1
+
+            if (cont_a == 3 and cont_b == 2) or (cont_a == 2 and cont_b == 3):
+                return soma
+            else:
+                return 0
+        else:
+            return 0
+        
+
+# 11.3.Função calcula pontos quadra
+    def calcula_pontos_quadra(lista_n):
+        soma = 0
+        for num in lista_n:
+            soma += num
+        maior_ig = 0
+        for num1 in lista_n:
+            ig = 0
+            for num2 in lista_n:
+                if num1 == num2: 
+                    ig += 1
+            if ig > maior_ig:
+                maior_ig = ig
+        if maior_ig >= 4:
+            return soma
+        else:
+            return 0
+    
+# 11.4. Função calcula pontos soma
+    def calcula_pontos_soma(lista_n):
+        i = 1
+        seq = 0
+        seq_final = 0
+        ig = 0
+        sem = 0
+        soma = 0
+        for num in lista_n:
+            soma += num
+        while i < len(lista_n):
+            if lista_n[i] - lista_n[i - 1] == 1:
+                seq += 1
+                if seq > seq_final:
+                    seq_final = seq
+            elif lista_n[i] == lista_n[i - 1]:
+                ig =+ 1
+                if ig > sem:
+                    sem = ig
+            else:
+                seq = 0
+            i += 1
+        if sem >= 5:
+            return 50
+        elif seq_final == 4:
+            return 15
+        elif seq_final == 5:
+            return 30
+        else:
+            return soma
+
+
+# 11.5. Função calcula pontos sequencia alta
+    def calcula_pontos_sequencia_alta(lista_n):
+        lista_n = lista_n.copy()
+        ii = 0
+        lista_n2 = []
+        while ii < len(lista_n):    
+            i = 0
+            m = lista_n[0]
+            while i < len(lista_n):
+                if lista_n[i] <= m:
+                    m = lista_n[i]
+                    indice = i
+                i += 1
+            lista_n2.append(m)
+            del lista_n[indice]
+            ii = 0
+    
+        seq = 0
+        i = 1
+        seq_final = 0
+        while i < len(lista_n2):
+            if lista_n2[i] - lista_n2[i - 1] == 1:
+                seq += 1
+                if seq > seq_final:
+                    seq_final = seq
+            elif lista_n2[i] - lista_n2[i - 1] > 1:
+                seq = 0
+            i += 1
+        if seq_final >= 4:
+            return 30
+        else:
+            return 0
+# 11.6. Função calcula pontos sequencia baixa
+    def calcula_pontos_sequencia_baixa(lista_n):
+        lista_n = lista_n.copy()
+        ii = 0
+        lista_n2 = []
+        while ii < len(lista_n):    
+            i = 0
+            m = lista_n[0]
+            while i < len(lista_n):
+                if lista_n[i] <= m:
+                    m = lista_n[i]
+                    indice = i
+                i += 1
+            lista_n2.append(m)
+            del lista_n[indice]
+            ii = 0
+    
+        seq = 0
+        i = 1
+        seq_final = 0
+        while i < len(lista_n2):
+            if lista_n2[i] - lista_n2[i - 1] == 1:
+                seq += 1
+                if seq > seq_final:
+                    seq_final = seq
+            elif lista_n2[i] - lista_n2[i - 1] > 1:
+                seq = 0
+            i += 1
+        if seq_final >= 3:
+            return 15
+        else:
+            return 0
+    
+        
+    dicionário['cinco_iguais'] = calcula_pontos_quina(entrada)
+    dicionário['full_house'] = calcula_pontos_full_house(entrada)
+    dicionário['quadra'] = calcula_pontos_quadra(entrada)
+    dicionário['sem_combinacao'] = calcula_pontos_soma(entrada)
+    dicionário['sequencia_alta'] = calcula_pontos_sequencia_alta(entrada)
+    dicionário['sequencia_baixa'] = calcula_pontos_sequencia_baixa(entrada)
+
+
+    return dicionário
