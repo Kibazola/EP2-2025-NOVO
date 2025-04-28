@@ -1,3 +1,4 @@
+#QUESTÕES DO CONCEITO D:
 #1
 from random import randint
 
@@ -101,5 +102,37 @@ def calcula_pontos_sequencia_baixa(lista_n):
         i += 1
     if seq_final >= 3:
         return 15
+    else:
+        return 0
+
+#7
+def calcula_pontos_sequencia_alta(lista_n):
+    ii = 0
+    lista_n2 = []
+    while ii < len(lista_n):    
+        i = 0
+        m = lista_n[0]
+        while i < len(lista_n):
+            if lista_n[i] <= m:
+                m = lista_n[i]
+                indice = i
+            i += 1
+        lista_n2.append(m)
+        del lista_n[indice]
+        ii = 0
+   
+    seq = 0
+    i = 1
+    seq_final = 0
+    while i < len(lista_n2):
+        if lista_n2[i] - lista_n2[i - 1] == 1:
+            seq += 1
+            if seq > seq_final:
+                seq_final = seq
+        elif lista_n2[i] - lista_n2[i - 1] > 1:
+            seq = 0
+        i += 1
+    if seq_final >= 4:
+        return 30
     else:
         return 0
