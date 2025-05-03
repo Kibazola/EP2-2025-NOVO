@@ -137,7 +137,7 @@ def calcula_pontos_sequencia_alta(lista_n):
     else:
         return 0
     
-#QUESTÕES DO CONCEITO D:
+#QUESTÕES DO CONCEITO C:
 #8
 def calcula_pontos_full_house(lista_n):
     soma = 0
@@ -173,3 +173,6 @@ def calcula_pontos_quadra(lista_n):
         return soma
     else:
         return 0
+    
+
+#QUESTÕES DO CONCEITO B:
