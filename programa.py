@@ -22,16 +22,22 @@ cartela_de_pontos = {
 
 n_rolamentos = 0
 funcoes.imprime_cartela(cartela_de_pontos)
-dados_r = funcoes.rolar_dados(5)
-dados_g = []
+dados_r =funcoes.rolar_dados(5)
+dados_g =[]
 lista = ["1","2","3","4","5","6","sem_combinacao", "quadra", "full_house", "sequencia_baixa", "sequencia_alta", "cinco_iguais"]
+lista_correspondencia = ["0", "1", "2", "3", "4"]
 lista_2 = []
 i = 0
 while i < 12:
     print("Dados rolados:", dados_r)
     print("Dados guardados:", dados_g)
     print("Digite 1 para guardar um dado, 2 para remover um dado, 3 para rerrolar, 4 para ver a cartela ou 0 para marcar a pontuação:")
+        
     acao = str(input())
+    while acao not in lista_correspondencia:
+        print("Opção inválida. Tente novamente.")
+        acao = str(input())
+   
     if acao == "0":
         print("Digite a combinação desejada:")
         combinacao = str(input())
@@ -41,10 +47,9 @@ while i < 12:
                 contador = 0
                 while contador < len(dados_r):
                     funcoes.guardar_dado(dados_r, dados_g, contador) 
-                    contador = 0
                 funcoes.faz_jogada(dados_g, combinacao, cartela_de_pontos)
-                dados_r = funcoes.rolar_dados(5)
-                dados_g = []
+                dados_r =funcoes.rolar_dados(5)
+                dados_g =[]
                 n_rolamentos = 0
             else:
                 print("Essa combinação já foi utilizada.")
@@ -86,5 +91,4 @@ else:
 
 
 funcoes.imprime_cartela(cartela_de_pontos)
-
 print("Pontuação total:", pontuaca_final)
