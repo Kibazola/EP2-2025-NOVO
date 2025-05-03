@@ -37,24 +37,23 @@ while i < 12:
     while acao not in lista_correspondencia:
         print("Opção inválida. Tente novamente.")
         acao = str(input())
-   
     if acao == "0":
         print("Digite a combinação desejada:")
         combinacao = str(input())
-        if combinacao in lista:
-            if combinacao not in lista_2:
-                lista_2.append(combinacao)
-                contador = 0
-                while contador < len(dados_r):
-                    funcoes.guardar_dado(dados_r, dados_g, contador) 
-                funcoes.faz_jogada(dados_g, combinacao, cartela_de_pontos)
-                dados_r =funcoes.rolar_dados(5)
-                dados_g =[]
-                n_rolamentos = 0
-            else:
-                print("Essa combinação já foi utilizada.")
-        else:
+        while combinacao in lista_2:
+            print("Essa combinação já foi utilizada.")
+            combinacao = str(input())
+        while combinacao not in lista:
             print("Combinação inválida. Tente novamente.")
+            combinacao = str(input())
+        lista_2.append(combinacao)
+        while len(dados_r) != 0:
+            funcoes.guardar_dado(dados_r, dados_g, 0) 
+        funcoes.faz_jogada(dados_g, combinacao, cartela_de_pontos)
+       
+        dados_r = funcoes.rolar_dados(5)
+        dados_g = []
+        n_rolamentos = 0
         i += 1
     elif acao == "1":
         print("Digite o índice do dado a ser guardado (0 a 4):")
